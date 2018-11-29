@@ -4,8 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const globby = require('globby')
 const MarkdownIt = require('markdown-it')
-const markdownItKatex = require('markdown-it-katex')
-// const markdownItLatex = require('markdown-it-latex').default
+const markdownItLatex = require('markdown-it-mathtex')
 const markdownItHighlight = require('markdown-it-highlight').default
 const yaml = require('js-yaml')
 const mkdirp = require('mkdirp')
@@ -29,7 +28,7 @@ function processmd (options, callback) {
   const markdownIt = MarkdownIt(options.markdownOptions)
 
   if (options.renderLatex) {
-    markdownIt.use(markdownItKatex)
+    markdownIt.use(markdownItLatex)
   }
 
   if (options.highlightCode) {
